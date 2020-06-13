@@ -1,0 +1,63 @@
+QUERY 1
+
+SELECT Genre.name , Count(*) AS number_of_Spread
+FROM Genre
+join Track
+On Genre.GenreId= Track.GenreId
+JOIN InvoiceLine
+On InvoiceLine.TrackId = Track.TrackId
+Group by Genre.name
+ORDER BY number_of_Spread DESC
+LIMIT 10
+
+
+
+QUERY 2
+
+SELECT  FirstName || ' ' || LastName as Name, sum(Invoice.Total) as Totalpayment
+FROM Customer , Invoice 
+WHERE Customer.CustomerId=Invoice.CustomerId
+GROUP BY (Invoice.CustomerId)
+ORDER BY Totalpayment desc
+LIMIT 5; 
+
+
+
+
+QUERY 3
+
+SELECT Playlist.name , Count(*) AS Popular_TOP
+FROM Playlist
+join PlaylistTrack
+On Playlist.PlaylistId= PlaylistTrack.PlaylistId
+JOIN Track
+On Playlist.PlaylistId = Track.TrackId
+Group by Playlist.name
+ORDER BY Popular_TOP DESC
+LIMIT 5
+
+
+
+QUERY 4
+
+SELECT Artist.Name AS TopArtist , count(*) AS number_of_music
+FROM Artist 
+JOIN Album
+ON Album.ArtistId = Artist.ArtistId
+JOIN Track
+ON Album.AlbumId = Track.AlbumId
+GROUP BY Artist.Name 
+ORDER BY number_of_music DESC
+LIMIT 10
+
+
+
+
+
+
+
+
+
+
+
+
